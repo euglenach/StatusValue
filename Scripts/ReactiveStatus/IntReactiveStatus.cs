@@ -6,7 +6,6 @@ using UnityEngine;
 
 namespace StatusValues
 {
-    [System.Serializable]
     public class IntReactiveStatus : ReactiveStatus<int, float>
     {
         protected override int CalculationStatusCore(IReadOnlyList<IStatusElement<float>> elements)

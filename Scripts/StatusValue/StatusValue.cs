@@ -6,10 +6,8 @@ using UnityEngine;
 
 namespace StatusValues
 {
-    [Serializable]
     public abstract class StatusValue<TValue, TElement> : IReadOnlyStatusValue<TValue> ,IStatusCalculable<TElement>
     {
-        [SerializeField]
         protected TValue baseValue;
         private TValue value;
         private readonly List<IStatusElement<TElement>> elements = new();

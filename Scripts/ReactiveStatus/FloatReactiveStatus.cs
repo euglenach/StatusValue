@@ -6,7 +6,6 @@ using UnityEngine;
 
 namespace StatusValues
 {
-    [System.Serializable]
     public class FloatReactiveStatus : ReactiveStatus<float>
     {
         public FloatReactiveStatus(float baseValue) : base(baseValue)
