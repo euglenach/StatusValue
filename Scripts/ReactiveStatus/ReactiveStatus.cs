@@ -10,61 +10,37 @@ namespace StatusValues
     public abstract class ReactiveStatus<TValue, TElement> : StatusValue<TValue, TElement>, IDisposable, IReadOnlyReactiveProperty<TValue>
     {
         private bool isDisposed;
-        private readonly Subject<TValue> valueChanged = new();
+        private readonly ReactiveProperty<TValue> innerProperty = new();
 
-        public bool HasValue => true;
+        public bool HasValue => innerProperty.HasValue;
 
-        public ReactiveStatus(TValue baseValue) : base(baseValue){}
+        public ReactiveStatus(TValue baseValue) : base(baseValue)
+        {
+            innerProperty.Value = baseValue;
+        }
         
         public override bool RemoveElement(IStatusElement<TElement> element)
         {
-            var before = Value;
             var result = base.RemoveElement(element);
-            var after = Value;
-            if(!before.Equals(after) && !isDisposed)
-            {
-                valueChanged.OnNext(after);
-            }
-
+            innerProperty.Value = Value;
             return result;
         }
         
         public override void AddElement(IStatusElement<TElement> element)
         {
-            var before = Value;
             base.AddElement(element);
-            var after = Value;
-            if(before.Equals(after) || isDisposed) return;
-            
-            valueChanged.OnNext(after);
+            innerProperty.Value = Value;
         }
 
         public override void ClearElements()
         {
-            var before = Value;
             base.ClearElements();
-            var after = Value;
-            if (before.Equals(after) || isDisposed) return;
-
-            valueChanged.OnNext(after);
+            innerProperty.Value = Value;
         }
 
-        public void ForceNotify()
-        {
-            if (isDisposed) return;
-            valueChanged.OnNext(Value);
-        }
-        
         public IDisposable Subscribe(IObserver<TValue> observer)
         {
-            if (isDisposed)
-            {
-                observer.OnCompleted();
-                return Disposable.Empty;
-            }
-            // raise latest value on subscribe
-            observer.OnNext(Value);
-            return valueChanged.Subscribe(observer);
+            return innerProperty.Subscribe(observer);
         }
         
         public void Dispose()
@@ -77,7 +53,7 @@ namespace StatusValues
         {
             if (isDisposed) return;
             isDisposed = true;
-            valueChanged?.Dispose();
+            innerProperty?.Dispose();
         }
 
         public static implicit operator TValue(ReactiveStatus<TValue, TElement> self)
