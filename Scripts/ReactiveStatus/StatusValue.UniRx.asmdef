@@ -1,0 +1,17 @@
+{
+    "name": "StatusValue.UniRx",
+    "rootNamespace": "",
+    "references": [
+        "GUID:c907980620a81c04a8dfa7d0cec45a88",
+        "GUID:560b04d1a97f54a4e82edc0cbbb69285"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
