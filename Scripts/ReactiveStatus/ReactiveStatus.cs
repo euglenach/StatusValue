@@ -1,4 +1,4 @@
-﻿#if UNIRX_REACTIVESTATUS_SUPPORT
+﻿#if STATUSVALUE_UNIRX_SUPPORT
 using System;
 using System.Collections.Generic;
 using System.Linq;
