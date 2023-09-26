@@ -2,7 +2,7 @@
 {
     public enum CalculationType
     {
-        Additive,Multiply,Const
+        Additive, Multiply, Const
     }
 
     public interface IStatusElement<T>
@@ -16,7 +16,7 @@
         public CalculationType CalculationType{get;}
         public float Value{get;}
 
-        public FloatStatusElement(float value,CalculationType calculationType)
+        public FloatStatusElement(float value, CalculationType calculationType)
         {
             CalculationType = calculationType;
             Value = value;

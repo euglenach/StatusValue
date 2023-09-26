@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace StatusValues
 {
-    public abstract class StatusValue<TValue, TElement> : IReadOnlyStatusValue<TValue> ,IStatusCalculable<TElement>
+    public abstract class StatusValue<TValue, TElement> : IReadOnlyStatusValue<TValue>, IStatusCalculable<TElement>
     {
         protected TValue baseValue;
         private TValue value;
