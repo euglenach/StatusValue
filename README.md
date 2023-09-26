@@ -72,8 +72,7 @@ status.RemoveElement(element);
 
 ## ReactiveStatus
 
-StatusValueに `UniRx` の `ReactiveProperty` の効果をプラスしたようなオブジェクトです。
-`Value` の値を購読できます。
+StatusValueに `UniRx` の `ReactiveProperty` の効果をプラスしたようなオブジェクトで、`Value` の値の変化を購読することができます。  
 この機能を有効にするには Scripting Define Symbols に `STATUSVALUE_UNIRX_SUPPORT` を追加してください
 
 ```csharp
@@ -99,7 +98,7 @@ class PlayerStatus
 ## カスタマイズ
 
 標準では `FloatStatusValue` と `IntStatusValue` を提供しています。
-標準の計算方法や機能をカスタマイズしたい場合は `StatusValue<T>` または `StatusValue<TValue, TElement>` を実装して独自のクラスを作成できます。
+標準の計算方法や機能をカスタマイズしたい場合は `StatusValue<T>` または `StatusValue<TValue, TElement>` を継承して独自のクラスを作成できます。
 `CalculationStatusCore`メソッドをオーバーライドすれば計算ロジックを自由に記述できます。返り値はそのまま `Value` に代入されます。
 
 以下の例は FloatStatusValue に 最小値と最大値を設定できるようにカスタマイズしたクラスです。
