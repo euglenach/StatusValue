@@ -1,0 +1,11 @@
+{
+  "name": "com.euglenach.statusvalue",
+  "version": "0.1.0",
+  "displayName": "StatusValue",
+  "description": "automatic status calculator",
+  "author": {
+    "name": "euglenach"
+  },
+  "license": "MIT",
+  "category": "Scripting"
+}
